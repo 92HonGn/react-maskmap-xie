@@ -2,14 +2,12 @@ import React from 'react';
 import './App.css';
 
 //地圖組建
-import Map from './components/map';
+import Map from './components/Simple';
 
-function App() {
+
+export default function App() {
   return (
-    <>
       <Map />
-    </>
   );
 }
 
-export default App;
