@@ -45,6 +45,8 @@ export default function EventsExample (){
     </Map>
   );
 }
+// import React, { createRef, Component } from 'react'
+// import { Map, Marker, Popup, TileLayer } from 'react-leaflet'
 
 // type State = {
 //   hasLocation: boolean,
