@@ -1,18 +1,15 @@
-import React,{ useState } from "react";
+import React,{} from "react";
 
-export default function Search() {
-  const [inputValue, setinputValue] = useState('區域');
+export default function Search({onSubmitValue, bindValue}) {
   
-  function handleChange(e){
-    setinputValue(e.target.value);
-  }
-
   return (
-    <div>
+    <div className="search-components">
       <h2>現在位置</h2>
       <div className="search-fn">
-        <input type="search" value={inputValue} onChange={handleChange}/>
-        <button type="submit">搜尋</button>
+        <form onSubmit={ onSubmitValue }>
+          <input type="search" { ...bindValue } />
+          <input type="submit" value="Submit" />
+        </form>
       </div>
       <div className="filter-fn">
         <select name="" id="">
@@ -28,3 +25,19 @@ export default function Search() {
     </div>
   );
 }
+
+// const useInput = initialValue => {
+//   const [value, setValue] = useState(initialValue);
+
+//   return {
+//     value,
+//     setValue,
+//     reset: () => setValue(""),
+//     bind: {
+//       value,
+//       onChange: event => {
+//         setValue(event.target.value);
+//       }
+//     }
+//   };
+// };

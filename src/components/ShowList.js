@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, {} from "react";
 
-export default function ShowList() {
+export default function ShowList({storeName}) {
 
   return (
     <div>
       <ul>
         <li>
           <div className="store-name">
-            <h3>XXX藥局</h3>
+          <h3>{storeName}藥局</h3>
             <p>
               <span>營業中</span>
               <span>300m</span>
