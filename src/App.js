@@ -1,13 +1,13 @@
 import React from 'react';
 
-import Sidebar from './pages/Sidebar'
+import Counter from './components/Counter'
 
 import './App.css';
 
 
 export default function App() {
   return (
-    <Sidebar/>
+    <Counter />
   );
 }
 
