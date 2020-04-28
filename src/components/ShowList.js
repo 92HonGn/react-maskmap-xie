@@ -1,42 +1,21 @@
-import React, {} from "react";
+import React, { useState, useEffect } from "react";
+
 
 export default function ShowList({storeName}) {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    fetch("https://findmasks.herokuapp.com/places")
+      .then(response => response.json())
+      .then(data => setData(data));
+  });
 
   return (
     <div>
       <ul>
-        <li>
-          <div className="store-name">
-          <h3>{storeName}藥局</h3>
-            <p>
-              <span>營業中</span>
-              <span>300m</span>
-            </p>
-          </div>
-          <div className="store-intro">
-            <div className="address">
-              <span>icon</span>
-              <span>地址</span>
-            </div>
-            <div className="phone">
-              <span>icon</span>
-              <span>電話</span>
-            </div>
-            <div className="time">
-              <span>icon</span>
-              <span>07:00-9:00,</span>
-              <span>13:00-20:00</span>
-            </div>
-          </div>
-          <div className="store-mask">
-            <div className="adult">
-              成人口罩<span>11</span>個
-            </div>
-            <div className="child">
-              兒童口罩<span>123</span>個
-            </div>
-          </div>
-        </li>
+        {data.map(el => (
+          <li key={el.id}>{el.title}</li>
+        ))}
       </ul>
     </div>
   );
