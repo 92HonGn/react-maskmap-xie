@@ -1,19 +1,27 @@
 import React, { useState, useEffect } from "react";
 
 const ShowList = ({storeName}) => {
-  const [lol, setLol] = useState([]);
+  const [data, setData] = useState([]);
+  // const [enteredFilter, setEnteredFilter] = useState("");
+  const apiURL = "https://raw.githubusercontent.com/kiang/pharmacies/master/json/points.json?fbclid=IwAR1k5dAvUSR7XCoG_H_RQx9pzYyJEMqG9AN06e4HNJIASIv-_gwTseX4sSI";
 
   useEffect(() => {
-    fetch("https://raw.githubusercontent.com/kiang/pharmacies/master/json/points.json?fbclid=IwAR1k5dAvUSR7XCoG_H_RQx9pzYyJEMqG9AN06e4HNJIASIv-_gwTseX4sSI")
-      .then(response => response.json())
-      .then(data => setLol(data.features));
-  });
+    const fetchData = async () => {
+      let response = await fetch(apiURL);
+      let responseData  = await response.json();
+      let filteredData = responseData.features.filter(item => {
+        return item.properties.address.includes(storeName);
+      });
+      setData(filteredData);
+    };
+    fetchData();
+  },[storeName]);
 
   return (
     <div>
       <ul>
-        {lol.map(el => (
-          <li>{el.properties.id}</li>
+        {data.map(el => (
+          <li>{el.properties.address}</li>
         ))}
       </ul>
     </div>
