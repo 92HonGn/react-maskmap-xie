@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const ShowList = ({storeName}) => {
+const ShowList = ({storeName, currentlongitude, currentlatitude}) => {
   const [data, setData] = useState([]);
   // const [enteredFilter, setEnteredFilter] = useState("");
   const apiURL = "https://raw.githubusercontent.com/kiang/pharmacies/master/json/points.json?fbclid=IwAR1k5dAvUSR7XCoG_H_RQx9pzYyJEMqG9AN06e4HNJIASIv-_gwTseX4sSI";
@@ -19,6 +19,8 @@ const ShowList = ({storeName}) => {
 
   return (
     <div>
+      {currentlongitude}
+      {currentlatitude}
       <ul>
         {data.map(el => (
           <li>{el.properties.address}</li>
