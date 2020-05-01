@@ -1,13 +1,13 @@
 import React,{} from "react";
 
-export default function Search({onSubmitValue, bindValue}) {
+export default function Search({onSubmitValue, bindValue, onClickPositon}) {
   
   return (
     <div className="search-components">
       <h2>現在位置</h2>
       <div className="search-fn">
         <form onSubmit={ onSubmitValue }>
-          <input type="search" { ...bindValue } />
+          <input type="search" { ...bindValue } onClick={ onClickPositon }/>
           <input type="submit" value="Submit" />
         </form>
       </div>
@@ -26,18 +26,3 @@ export default function Search({onSubmitValue, bindValue}) {
   );
 }
 
-// const useInput = initialValue => {
-//   const [value, setValue] = useState(initialValue);
-
-//   return {
-//     value,
-//     setValue,
-//     reset: () => setValue(""),
-//     bind: {
-//       value,
-//       onChange: event => {
-//         setValue(event.target.value);
-//       }
-//     }
-//   };
-// };

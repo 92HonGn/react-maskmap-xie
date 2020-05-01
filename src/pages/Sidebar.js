@@ -9,12 +9,27 @@ export default function Sidebar() {
   
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    alert(`Submitting Name ${value}`);
+    // alert(`Submitting Name ${value}`);
     reset();
   }
+
+  const handlePosition = () =>  {
+    // alert(`Hi`);
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition);
+    } else { 
+      // useInput("Geolocation is not supported by this browser.")
+      // x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+  }
+
+  function showPosition(position) {
+    console.log(`Latitude: ${position.coords.latitude}, Longitude: ${position.coords.longitude}`)
+  }
+
   return (
      <>
-      <Search onSubmitValue={ handleSubmit } bindValue={ bind } />
+      <Search onSubmitValue={ handleSubmit } bindValue={ bind } onClickPositon={ handlePosition } />
       <ShowList storeName={value} />
      </>
   );
