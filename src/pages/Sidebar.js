@@ -2,6 +2,9 @@ import React,{ useState } from "react";
 
 //側邊欄
 import Search from '../components/Search';
+import Location from '../components/location';
+import Filter from '../components/filter';
+
 import ShowList from '../components/ShowList';
 
 export default function Sidebar() {
@@ -36,8 +39,12 @@ export default function Sidebar() {
 
   return (
      <>
-      <Search onSubmitValue={ handleSubmit } bindValue={ bind } onClickPositon={ handlePosition } />
-      <ShowList storeName={value} currentlongitude={nowlongitude} currentlatitude={nowlatitude}/>
+       <div className="search-components">
+          <Search onSubmitValue={ handleSubmit } bindValue={ bind }/>
+          <Location onHandlePostion={handlePosition} />
+          <Filter/>
+       </div>
+       <ShowList storeName={value} currentlongitude={nowlongitude} currentlatitude={nowlatitude}/>
      </>
   );
 }
