@@ -9,17 +9,25 @@ const ShowList = ({storeName, currentlongitude, currentlatitude}) => {
     const fetchData = async () => {
       let response = await fetch(apiURL);
       let responseData  = await response.json();
-      let filteredData = responseData.features.filter(item => {
-        return item.properties.address.includes(storeName);
-      });
-      setData(filteredData);
+
+      if(storeName || storeName===""){
+        let filteredData = responseData.features.filter(item => {
+          return item.properties.address.includes(storeName);
+        });
+        setData(filteredData);
+      }else if(currentlongitude && currentlatitude){
+        console.log("sdsdsdsdsd1")
+      }
+      console.log("sdsdsdsdsd2")
     };
+
     fetchData();
-  },[storeName]);
+  },[storeName, currentlongitude, currentlatitude]);
 
   return (
     <div>
       {currentlongitude}
+      <br/>
       {currentlatitude}
       <ul>
         {data.map(el => (
