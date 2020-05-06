@@ -38,14 +38,14 @@ export default function Sidebar() {
   }
 
   return (
-     <>
+     <div className="sidebar-component">
        <div className="search-components">
           <Search onSubmitValue={ handleSubmit } bindValue={ bind }/>
           <Location onHandlePostion={handlePosition} />
           <Filter/>
        </div>
        <ShowList storeName={value} currentlongitude={nowlongitude} currentlatitude={nowlatitude}/>
-     </>
+     </div>
   );
 }
 

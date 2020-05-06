@@ -8,7 +8,7 @@ const ShowList = ({storeName, currentlongitude, currentlatitude}) => {
   const distance = 800;
 
   const space = (latitude1, longitude1, latitude2, longitude2) => {
-    console.log(latitude1, longitude1, latitude2, longitude2);
+    // console.log(latitude1, longitude1, latitude2, longitude2);
     let radLat1 = latitude1 * Math.PI / 180.0;
     let radLat2 = latitude2 * Math.PI / 180.0;
     let a = radLat1 - radLat2;
