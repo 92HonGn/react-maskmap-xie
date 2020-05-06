@@ -4,7 +4,7 @@ import PopupWrapper from '../components/PopupWrapper'
 
 const defaultCenter = [23.1, 120.6];
 
-export default function MaskMap() {
+export default function MaskMap({mapData}) {
   return (
       <MapWrapper
         viewport={{

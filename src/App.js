@@ -5,7 +5,7 @@ import './App.css';
 
 export default function App() {
   const [data, setData] = useState([]);
-  const [localdata, setLocalData] = useState([]);
+  const [mapdata, setMapData] = useState([]);
   const [nowlongitude , setNowlongitude] = useState();
   const [nowlatitude , setNowlatitude] = useState();
   const {value, bind, reset} = useInput('');
@@ -55,7 +55,8 @@ export default function App() {
         let filteredData = responseData.features.filter(item => {
           return space(nowlatitude, nowlongitude, item.geometry.coordinates[1], item.geometry.coordinates[0]) < distance;
         });
-        setLocalData(filteredData);
+        setData(filteredData);
+        setMapData(filteredData);
       }else{
         let filteredData = responseData.features.filter(item => {
           return item.properties.address.includes(value);
@@ -68,8 +69,8 @@ export default function App() {
 
   return (
     <>
-      <Sidebar location={handlePosition} submit={handleSubmit} Bind={ bind } initData={data} localData={localdata}/>
-      <MaskMap />
+      <Sidebar location={handlePosition} submit={handleSubmit} Bind={ bind } rawData={data}/>
+      <MaskMap mapData={mapdata}/>
     </>
   );
 }

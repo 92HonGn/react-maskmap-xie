@@ -6,7 +6,7 @@ import Location from '../components/location';
 import Filter from '../components/filter';
 import ShowList from '../components/ShowList';
 
-export default function Sidebar({location, submit, Bind, initData, localData}) {
+export default function Sidebar({location, submit, Bind, rawData}) {
   
   return (
      <div className="sidebar-component">
@@ -15,7 +15,7 @@ export default function Sidebar({location, submit, Bind, initData, localData}) {
           <Location onHandlePostion={location} />
           <Filter/>
        </div>
-         <ShowList data={localData}/>
+         <ShowList data={rawData}/>
      </div>
   );
 }
