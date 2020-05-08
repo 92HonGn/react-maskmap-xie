@@ -3,7 +3,7 @@ import { Popup, Marker } from "react-leaflet";
 
 const PopupWrapper = (props) => {
   return (
-    <Marker position={props.position}>
+    <Marker key={props.key} position={props.position}>
       <Popup>{props.children}</Popup>
     </Marker>
   );

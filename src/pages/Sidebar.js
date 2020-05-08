@@ -5,18 +5,36 @@ import Search from '../components/Search';
 import Location from '../components/location';
 import Filter from '../components/filter';
 import ShowList from '../components/ShowList';
+import styled from '@emotion/styled';
+
+const SidebarComponent = styled.div`
+  width: 350px;
+  height: 100%;
+  overflow-y: scroll;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+`;
+
+const SearchComponent = styled.div`
+  outline: 1px solid red;
+  padding: 20px;
+  background: rgb(244, 249, 252);
+`;
 
 export default function Sidebar({location, submit, Bind, rawData}) {
   
   return (
-     <div className="sidebar-component">
-       <div className="search-components">
+     <SidebarComponent>
+       <SearchComponent>
           <Search onSubmitValue={ submit } bindValue={ Bind }/>
           <Location onHandlePostion={location} />
           <Filter/>
-       </div>
-         <ShowList data={rawData}/>
-     </div>
+       </SearchComponent>
+       <ShowList data={rawData}/>
+     </SidebarComponent>
   );
 }
 

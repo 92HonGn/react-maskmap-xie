@@ -16,18 +16,19 @@ body {
 
 .leaflet-container {
   width: 100%;
-  min-height: 800px;
+  min-height: 100%;
   position: absolute;
   z-index: 0;
 }
 
-.sidebar-component{
+/* .sidebar-component{
   width: 350px;
   height: 100%;
+  overflow-y: scroll;
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   background-color: rgba(255,255,255,0.8);
   z-index: 1;
-}
+} */

@@ -2,19 +2,28 @@ import React from 'react'
 import MapWrapper from '../components/MapWrapper'
 import PopupWrapper from '../components/PopupWrapper'
 
-const defaultCenter = [23.1, 120.6];
+const defaultCenter = [25.00, 121.48];
 
 export default function MaskMap({mapData}) {
   return (
       <MapWrapper
         viewport={{
           center: defaultCenter,
-          zoom: 13
+          zoom: 15
         }}
       >
-        <PopupWrapper position={defaultCenter}>
-          {"Some content Here"}
-        </PopupWrapper>
+        {mapData.map(el => (
+          <PopupWrapper
+            key={el.properties.id} 
+            position={[el.geometry.coordinates[1], el.geometry.coordinates[0]]}>
+              {"Some content Here"}
+          </PopupWrapper>
+        ))}
+        {/* {mapData.map(el => (
+          <Marker key={el.properties.id} position={ [el.geometry.coordinates[1], el.geometry.coordinates[0]] }>
+            <Popup>{"Some content Here"}</Popup>
+          </Marker>
+        ))} */}
       </MapWrapper>
   );
 }
