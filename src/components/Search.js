@@ -11,6 +11,9 @@ const SearchFn = styled.div`
     position: relative;
     margin-bottom: 5px;
   }
+  p{
+    font-size: 12px;
+  }
   input[type="search"]{
     width: 100%;
     height: 40px;
@@ -48,11 +51,14 @@ export default function Search({onSubmitValue, bindValue}) {
         <h2>現在位置</h2>
         <form onSubmit={ onSubmitValue }>
           <input type="search" { ...bindValue }/>
-          <div class="submit-btn">
+          <div className="submit-btn">
             <input type="submit" value=""/>
-            <i class="fa fa-search" aria-hidden="true"></i>
+            <i className="fa fa-search" aria-hidden="true"></i>
           </div>
         </form>
+        <p>
+          搜尋所在縣市, 地址, 周遭店家名稱等
+        </p>
       </SearchFn>
   );
 }

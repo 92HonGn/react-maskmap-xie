@@ -10,7 +10,6 @@ import styled from '@emotion/styled';
 const SidebarComponent = styled.div`
   width: 350px;
   height: 100%;
-  overflow-y: scroll;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -19,9 +18,9 @@ const SidebarComponent = styled.div`
 `;
 
 const SearchComponent = styled.div`
-  outline: 1px solid red;
   padding: 20px;
   background: rgb(244, 249, 252);
+  position: relative;
 `;
 
 export default function Sidebar({location, submit, Bind, rawData}) {
