@@ -50,9 +50,6 @@ const ShowList = ({data}) => {
   return (
     <StoreLists>
       <ul>
-        {/* {data.map(el => (
-          <li>{el.properties.address}</li>
-        ))} */}
         {data.map(el => (
           <li>
             <div className="store-status">
@@ -77,11 +74,19 @@ const ShowList = ({data}) => {
               </p>
             </div>
             <div className="mask-total">
-              <div className="adult">
-                成人口罩<span>{el.properties.mask_adult}</span>個
+              <div className={`${el.properties.mask_adult === 0 ? 'sellout' : 'adult'}`}>
+                {el.properties.mask_adult === 0 ? (
+                  <p>成人口罩售完</p>
+                ) : (
+                  <p>成人口罩<span>{el.properties.mask_adult}</span>個</p>
+                )}
               </div>
-              <div className="child">
-                兒童口罩<span>{el.properties.mask_child}</span>個
+              <div className={`${el.properties.mask_child === 0 ? 'sellout' : 'child'}`}>
+                {el.properties.mask_child === 0 ? (
+                  <p>兒童口罩售完</p>
+                ) : (
+                  <p>兒童口罩<span>{el.properties.mask_child}</span>個</p>
+                )}
               </div>
             </div>
           </li>
@@ -90,4 +95,6 @@ const ShowList = ({data}) => {
     </StoreLists>
   );
 };
+
+
 export default ShowList;
