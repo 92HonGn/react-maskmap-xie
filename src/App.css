@@ -19,6 +19,8 @@ body {
   min-height: 100%;
   position: absolute;
   z-index: 0;
+  justify-content: center;
+  align-items: center;
 }
 
 /* .sidebar-component{

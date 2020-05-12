@@ -8,7 +8,7 @@ const CurrentLocation = styled.div`
   position: absolute;
   background: #fff;
   bottom: 40px;
-  display: none;
+  // display: none;
 `;
 
 export default function location({onHandlePostion}) {

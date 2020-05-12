@@ -12,7 +12,7 @@ export default function App() {
 
   const apiURL = "https://raw.githubusercontent.com/kiang/pharmacies/master/json/points.json?fbclid=IwAR1k5dAvUSR7XCoG_H_RQx9pzYyJEMqG9AN06e4HNJIASIv-_gwTseX4sSI";
 
-  const distance = 800;
+  const distance = 2000;
 
   const space = (latitude1, longitude1, latitude2, longitude2) => {
     let radLat1 = latitude1 * Math.PI / 180.0;
