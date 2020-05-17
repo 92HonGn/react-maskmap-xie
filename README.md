@@ -15,7 +15,7 @@ https://xd.adobe.com/view/a1884f2e-dc8d-4c38-6cce-a684e80a73ef-d7b9/screen/ebd90
 
 2.
 距離
-營業時間
+營業時間      目前進度
 需求口罩數量
 篩選完成
 
@@ -24,7 +24,7 @@ https://xd.adobe.com/view/a1884f2e-dc8d-4c38-6cce-a684e80a73ef-d7b9/screen/ebd90
 
 距離計算 
 
-營業時間顯示時段     目前仕事
+營業時間顯示時段     目前進度
 先抓今日時間找出星期幾
 再來定個時段
 08:00~21:30 上午下午晚上
