@@ -23,14 +23,14 @@ const SearchComponent = styled.div`
   position: relative;
 `;
 
-export default function Sidebar({location, submit, Bind, rawData}) {
+export default function Sidebar({location, submit, Bind, rawData, distance, time, mask}) {
   
   return (
      <SidebarComponent>
        <SearchComponent>
           <Search onSubmitValue={ submit } bindValue={ Bind }/>
           <Location onHandlePostion={location} />
-          <Filter/>
+          <Filter onDistanceValue={distance} onTimeValue={time} onMaskValue={mask}/>
        </SearchComponent>
        <ShowList data={rawData}/>
      </SidebarComponent>

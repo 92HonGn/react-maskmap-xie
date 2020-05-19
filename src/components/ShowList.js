@@ -1,4 +1,5 @@
-import React from "react";
+import React,{ useEffect } from "react";
+import moment from 'moment'
 import styled from '@emotion/styled';
 
 const StoreLists = styled.div`
@@ -47,6 +48,11 @@ const StoreLists = styled.div`
 
 
 const ShowList = ({data}) => {
+
+  const Opentime = '8:00 ~ 21:00';
+
+  
+
   return (
     <StoreLists>
       <ul>
@@ -70,7 +76,7 @@ const ShowList = ({data}) => {
               </p>
               <p className="open-time">
                 <i class="fa fa-clock-o" aria-hidden="true"></i>
-                <span>{el.properties.available}</span>
+                <span>{Opentime}</span>
               </p>
             </div>
             <div className="mask-total">
