@@ -7,16 +7,16 @@ https://raw.githubusercontent.com/kiang/pharmacies/master/json/points.json?fbcli
 https://xd.adobe.com/view/a1884f2e-dc8d-4c38-6cce-a684e80a73ef-d7b9/screen/ebd908a9-996c-438c-a76a-957f485c054c/1-1
 
 
-# 5/12號 目前進度
-1.
+# 5/20號 目前進度
+1.                           done
 清單顯示內容更改
 顯示附近地點的藥局
 不再顯示全部資料。
 
 2.
 filter.js
-篩選完成
-距離
+篩選select option
+距離                          done
 營業時間      
 需求口罩數量
 
@@ -24,7 +24,7 @@ filter.js
 3.
 營業中 / 非營業中判斷
 
-距離計算 
+距離計算                      done
 
 引入moment.js處理時間
 營業時間顯示時段     
