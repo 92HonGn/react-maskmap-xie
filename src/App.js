@@ -8,12 +8,10 @@ export default function App() {
   const [mapdata, setMapData] = useState([]);
   const [nowlongitude , setNowlongitude] = useState();
   const [nowlatitude , setNowlatitude] = useState();
-  const [Distance, setDistance] = useState();
   const {value, bind, reset} = useInput('');
+  const [dist, setDist] = React.useState(2000);
 
   const apiURL = "https://raw.githubusercontent.com/kiang/pharmacies/master/json/points.json?fbclid=IwAR1k5dAvUSR7XCoG_H_RQx9pzYyJEMqG9AN06e4HNJIASIv-_gwTseX4sSI";
-
-  const distance = 2000;
 
   const space = (latitude1, longitude1, latitude2, longitude2) => {
     let radLat1 = latitude1 * Math.PI / 180.0;
@@ -46,13 +44,12 @@ export default function App() {
   //關鍵字搜尋
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    alert(`Submitting Name ${value}`);
+    // alert(`Submitting Name ${value}`);
     reset();
   }
   const handleDistance = (evt) => {
-    evt.preventDefault();
-    console.log(evt.target.value);
-    setDistance(evt.target.value);
+    // console.log(evt.target.value);
+    setDist(evt.currentTarget.value);
   }
   const handleTime = (evt) => {
     evt.preventDefault();
@@ -62,6 +59,7 @@ export default function App() {
     evt.preventDefault();
     console.log(evt.target.value);
   }
+
 
   //資料串接
   useEffect(() => {
@@ -76,14 +74,15 @@ export default function App() {
           let storenamekeywords = item.properties.name.includes(value);
           let distanceMatch = space(nowlatitude, nowlongitude, item.geometry.coordinates[1], item.geometry.coordinates[0]);
 
-          return (distanceMatch < distance) && (addresskeywords || storenamekeywords);
+          return (distanceMatch <  dist) && (addresskeywords || storenamekeywords);
         });
         setData(filteredData);
         setMapData(filteredData);
+        // const newData = [...origin, newOne]
       }
     };
     fetchData();
-  },[value, nowlongitude, nowlatitude]);
+  },[value, nowlongitude, nowlatitude, dist]);
 
   return (
     <>

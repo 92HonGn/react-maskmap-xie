@@ -30,7 +30,7 @@ export default function filter({onDistanceValue, onTimeValue, onMaskValue}) {
       <FilterFn>
         <div className="distance">
           <select name="" id="" onChange={onDistanceValue}>
-            <option value="" selected="selected">距離</option>
+            <option value="2000" selected="selected">距離</option>
             <option value="2000">2公里內</option>
             <option value="800">800公尺內</option>
             <option value="400">400公尺內</option>
