@@ -1,4 +1,5 @@
 import React,{ useState, useEffect } from 'react'
+import moment from 'moment'
 import Sidebar from './pages/Sidebar'
 import MaskMap from './pages/MaskMap'
 import './App.css';
@@ -79,9 +80,20 @@ export default function App() {
 
           return (distanceMatch <  dist) && (maskTotal < maskNum) &&(addresskeywords || storenamekeywords);
         });
-        setData(filteredData);
-        setMapData(filteredData);
+        let newData = filteredData.map(item=>{
+          let nowTime = moment().format('dddd') + moment().format('a') + "看診";
+          let operate = item.properties.available.split("、").includes(nowTime);
+          item.properties["Operate"] = (operate) ? "營業中" : "非營業中"
+          item.properties["OperateTime"] = "8:00~11:00";
+          return item;
+        })
+
+        console.log(newData);
+
+        setData(newData);
+        setMapData(newData);
         // const newData = [...origin, newOne]
+        
       }
     };
     fetchData();

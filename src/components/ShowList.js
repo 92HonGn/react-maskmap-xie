@@ -1,5 +1,4 @@
-import React,{ useEffect } from "react";
-import moment from 'moment'
+import React from "react";
 import styled from '@emotion/styled';
 
 const StoreLists = styled.div`
@@ -61,7 +60,7 @@ const ShowList = ({data}) => {
             <div className="store-status">
               <h2 className="name">{el.properties.name}</h2>
               <div className="status">
-                <span>營業中</span>
+                <span>{el.properties.Operate}</span>
                 <span>300m</span>
               </div>
             </div>
