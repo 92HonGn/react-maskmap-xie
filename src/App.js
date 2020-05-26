@@ -9,7 +9,8 @@ export default function App() {
   const [nowlongitude , setNowlongitude] = useState();
   const [nowlatitude , setNowlatitude] = useState();
   const {value, bind, reset} = useInput('');
-  const [dist, setDist] = React.useState(2000);
+  const [dist, setDist] = useState(2000);
+  const [maskNum, setMaskNum] = useState(10000);
 
   const apiURL = "https://raw.githubusercontent.com/kiang/pharmacies/master/json/points.json?fbclid=IwAR1k5dAvUSR7XCoG_H_RQx9pzYyJEMqG9AN06e4HNJIASIv-_gwTseX4sSI";
 
@@ -53,11 +54,12 @@ export default function App() {
   }
   const handleTime = (evt) => {
     evt.preventDefault();
-    console.log(evt.target.value);
+    // setMaskNum(evt.target.value);
   }
   const handleMask = (evt) => {
     evt.preventDefault();
-    console.log(evt.target.value);
+    setMaskNum(evt.currentTarget.value);
+    console.log(maskNum);
   }
 
 
@@ -73,8 +75,9 @@ export default function App() {
           let addresskeywords = item.properties.address.includes(value);
           let storenamekeywords = item.properties.name.includes(value);
           let distanceMatch = space(nowlatitude, nowlongitude, item.geometry.coordinates[1], item.geometry.coordinates[0]);
+          let maskTotal = item.properties.mask_adult + item.properties.mask_child;
 
-          return (distanceMatch <  dist) && (addresskeywords || storenamekeywords);
+          return (distanceMatch <  dist) && (maskTotal < maskNum) &&(addresskeywords || storenamekeywords);
         });
         setData(filteredData);
         setMapData(filteredData);
@@ -82,7 +85,7 @@ export default function App() {
       }
     };
     fetchData();
-  },[value, nowlongitude, nowlatitude, dist]);
+  },[value, nowlongitude, nowlatitude, dist, maskNum]);
 
   return (
     <>

@@ -46,10 +46,10 @@ export default function filter({onDistanceValue, onTimeValue, onMaskValue}) {
         </div>
         <div className="mask-total">
           <select name="" id="" onChange={onMaskValue}>
-            <option value="" selected="selected">需求口罩</option>
-            <option value="2000">2000個以上</option>
-            <option value="1000,2000">1000到2000以內</option>
-            <option value="1000">1000個以下</option>
+            <option value="10000" selected="selected">需求口罩</option>
+            <option value="7000">7000個以上</option>
+            <option value="5000">5000個以下</option>
+            <option value="3000">3000個以下</option>
           </select>
         </div>
       </FilterFn>
