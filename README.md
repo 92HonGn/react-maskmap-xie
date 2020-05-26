@@ -16,9 +16,9 @@ https://xd.adobe.com/view/a1884f2e-dc8d-4c38-6cce-a684e80a73ef-d7b9/screen/ebd90
 2.
 filter.js
 篩選select option
-距離                          done
-營業時間      
-需求口罩數量                   done
+距離                         done
+營業時間                      done
+需求口罩數量                  done
 
 
 3.
@@ -27,6 +27,7 @@ filter.js
 -------------------------------------------------
 
 營業中 / 非營業中判斷           done
+
 
 引入moment.js處理時間
 營業時間顯示時段     
@@ -40,7 +41,7 @@ filter.js
 看診
 
 -------------------------
-口罩數量判斷三種狀態 done
+口罩數量判斷三種狀態             done
 成人口罩有
 兒童口罩有
 售完狀態

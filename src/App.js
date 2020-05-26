@@ -12,6 +12,7 @@ export default function App() {
   const {value, bind, reset} = useInput('');
   const [dist, setDist] = useState(2000);
   const [maskNum, setMaskNum] = useState(10000);
+  const [timeDiv, setTimeDiv] = useState("凌晨");
 
   const apiURL = "https://raw.githubusercontent.com/kiang/pharmacies/master/json/points.json?fbclid=IwAR1k5dAvUSR7XCoG_H_RQx9pzYyJEMqG9AN06e4HNJIASIv-_gwTseX4sSI";
 
@@ -55,12 +56,12 @@ export default function App() {
   }
   const handleTime = (evt) => {
     evt.preventDefault();
-    // setMaskNum(evt.target.value);
+    setTimeDiv(evt.currentTarget.value);
+    console.log(evt.currentTarget.value);
   }
   const handleMask = (evt) => {
     evt.preventDefault();
     setMaskNum(evt.currentTarget.value);
-    console.log(maskNum);
   }
 
 
@@ -80,18 +81,26 @@ export default function App() {
 
           return (distanceMatch <  dist) && (maskTotal < maskNum) &&(addresskeywords || storenamekeywords);
         });
-        let newData = filteredData.map(item=>{
+
+        let newData1 = filteredData.map(item=>{
           let nowTime = moment().format('dddd') + moment().format('a') + "看診";
+          let TimeDivision = moment().format('a');
           let operate = item.properties.available.split("、").includes(nowTime);
+          let distanceMatch = space(nowlatitude, nowlongitude, item.geometry.coordinates[1], item.geometry.coordinates[0]);
           item.properties["Operate"] = (operate) ? "營業中" : "非營業中"
-          item.properties["OperateTime"] = "8:00~11:00";
+          item.properties["TimeDivision"] = TimeDivision;
+          item.properties["OperateTime"] = "8:00~12:00";
+          item.geometry["Distance"] = Math.floor(distanceMatch, 2);
           return item;
         })
+        
+        let newData2 = newData1.filter(item => {
+          return  item.properties.TimeDivision === timeDiv;
+        });
 
-        console.log(newData);
-
-        setData(newData);
-        setMapData(newData);
+        console.log(newData2);
+        setData(newData2);
+        setMapData(newData2);
         // const newData = [...origin, newOne]
         
       }

@@ -47,11 +47,6 @@ const StoreLists = styled.div`
 
 
 const ShowList = ({data}) => {
-
-  const Opentime = '8:00 ~ 21:00';
-
-  
-
   return (
     <StoreLists>
       <ul>
@@ -61,7 +56,7 @@ const ShowList = ({data}) => {
               <h2 className="name">{el.properties.name}</h2>
               <div className="status">
                 <span>{el.properties.Operate}</span>
-                <span>300m</span>
+                <span>{el.geometry.Distance}m</span>
               </div>
             </div>
             <div className="store-info">
@@ -75,7 +70,7 @@ const ShowList = ({data}) => {
               </p>
               <p className="open-time">
                 <i class="fa fa-clock-o" aria-hidden="true"></i>
-                <span>{Opentime}</span>
+                <span>{el.properties.OperateTime}</span>
               </p>
             </div>
             <div className="mask-total">

@@ -38,7 +38,7 @@ export default function filter({onDistanceValue, onTimeValue, onMaskValue}) {
         </div>
         <div className="time">
           <select name="" id="" onChange={onTimeValue}>
-            <option value="" selected="selected">營業時間</option>
+            <option value="上午" selected="selected">營業時間</option>
             <option value="上午">上午</option>
             <option value="下午">下午</option>
             <option value="晚上">晚上</option>
