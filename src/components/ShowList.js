@@ -18,7 +18,8 @@ const StoreLists = styled.div`
   .mask-total{
     display: flex;
     div{
-      flex: 1 1 50%;
+      width: 50%;
+      height: 35px;
       border-radius: 20px;
       font-size: 12px;
       display: flex;
@@ -30,8 +31,8 @@ const StoreLists = styled.div`
       margin-right: 20px;
     }
     span{
-      font-size: 30px;
-      margin: 0 5px;
+      font-size: 25px;
+      margin: 0 2px;
     }
   }
   .adult{
