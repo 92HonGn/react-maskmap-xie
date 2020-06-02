@@ -51,8 +51,8 @@ const ShowList = ({data}) => {
   return (
     <StoreLists>
       <ul>
-        {data.map(el => (
-          <li>
+        {data.map((el,i) => (
+          <li key={i}>
             <div className="store-status">
               <h2 className="name">{el.properties.name}</h2>
               <div className="status">
@@ -70,7 +70,7 @@ const ShowList = ({data}) => {
                 <span>{el.properties.phone}</span>
               </p>
               <p className="open-time">
-                <i class="fa fa-clock-o" aria-hidden="true"></i>
+                <i className="fa fa-clock-o" aria-hidden="true"></i>
                 <span>{el.properties.OperateTime}</span>
               </p>
             </div>

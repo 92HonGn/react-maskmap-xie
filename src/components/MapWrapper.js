@@ -1,5 +1,7 @@
-import React, { ReactNode, ReactNodeArray } from "react";
-import { Map, TileLayer, MapProps } from "react-leaflet";
+import React from "react";
+// import React, { ReactNode, ReactNodeArray } from "react";
+import { Map, TileLayer } from "react-leaflet";
+// import { Map, TileLayer, MapProps } from "react-leaflet";
 
 const MapWrapper = (props) => {
   return (

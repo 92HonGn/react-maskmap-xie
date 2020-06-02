@@ -2,7 +2,7 @@ import React from "react";
 
 //側邊欄
 import Search from '../components/Search';
-import Location from '../components/location';
+// import Location from '../components/location';
 import Filter from '../components/filter';
 import ShowList from '../components/ShowList';
 import styled from '@emotion/styled';
@@ -23,13 +23,13 @@ const SearchComponent = styled.div`
   position: relative;
 `;
 
-export default function Sidebar({location, submit, Bind, rawData, distance, time, mask}) {
+export default function Sidebar({submit, Bind, rawData, distance, time, mask}) {
   
   return (
      <SidebarComponent>
        <SearchComponent>
           <Search onSubmitValue={ submit } bindValue={ Bind }/>
-          <Location onHandlePostion={location} />
+          {/* <Location onHandlePostion={location} /> */}
           <Filter onDistanceValue={distance} onTimeValue={time} onMaskValue={mask}/>
        </SearchComponent>
        <ShowList data={rawData}/>

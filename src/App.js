@@ -7,15 +7,20 @@ import './App.css';
 export default function App() {
   const [data, setData] = useState([]);
   const [mapdata, setMapData] = useState([]);
+
   const [nowlongitude , setNowlongitude] = useState();
   const [nowlatitude , setNowlatitude] = useState();
+
   const {value, bind, reset} = useInput('');
+
   const [dist, setDist] = useState(2000);
   const [maskNum, setMaskNum] = useState(10000);
   const [timeDiv, setTimeDiv] = useState("上午");
 
+  //API網址
   const apiURL = "https://raw.githubusercontent.com/kiang/pharmacies/master/json/points.json?fbclid=IwAR1k5dAvUSR7XCoG_H_RQx9pzYyJEMqG9AN06e4HNJIASIv-_gwTseX4sSI";
 
+  //計算距離
   const space = (latitude1, longitude1, latitude2, longitude2) => {
     let radLat1 = latitude1 * Math.PI / 180.0;
     let radLat2 = latitude2 * Math.PI / 180.0;
@@ -29,29 +34,27 @@ export default function App() {
 
   //定理位置取得
   const handlePosition = () =>  {
-    if(navigator.geolocation) {
       function error() {
         alert('無法取得你的位置')
       }
       function success(position) {
         console.log(`經度:${position.coords.longitude}, 緯度:${position.coords.latitude}`);
+        //經度
         setNowlongitude(position.coords.longitude);
+        //緯度
         setNowlatitude(position.coords.latitude);
       }
       navigator.geolocation.getCurrentPosition(success, error)
-    } else {
-      alert('Sorry, 你的裝置不支援地理位置功能。')
-    }
+    
   }
-
+  
   //關鍵字搜尋
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    // alert(`Submitting Name ${value}`);
     reset();
   }
   const handleDistance = (evt) => {
-    // console.log(evt.target.value);
+    evt.preventDefault();
     setDist(evt.currentTarget.value);
   }
   const handleTime = (evt) => {
@@ -63,11 +66,9 @@ export default function App() {
     setMaskNum(evt.currentTarget.value);
   }
 
-
+  window.addEventListener("load", handlePosition);
   //資料串接
   useEffect(() => {
-    window.addEventListener("load", handlePosition);
-
     const fetchData = async () => {
       let response = await fetch(apiURL);
       let responseData  = await response.json();
@@ -95,34 +96,28 @@ export default function App() {
           return item;
         })
 
-        // let newData2 = newData1.filter(item => {
-        //   let weekdays = moment().format('dddd');
-        //   let operate = item.properties.available;
-        //   console.log(weekdays + timeDiv + "看診");
-        //   return operate.indexOf(weekdays + timeDiv + "看診") >= 0;
-        // });
-        
-        console.log(newData1);
+        // console.log(newData1);
         setData(newData1);
         setMapData(newData1);
-        // const newData = [...origin, newOne]
-        
       }
     };
     fetchData();
-  },[value, nowlongitude, nowlatitude, dist, maskNum]);
+  },[value, nowlongitude, nowlatitude, dist, maskNum, timeDiv]);
 
   return (
     <>
       <Sidebar 
-        location={handlePosition} 
         submit={handleSubmit} 
         Bind={ bind } 
         rawData={data}
         distance={handleDistance}
         time={handleTime}
         mask={handleMask}/>
-      <MaskMap mapData={mapdata}/>
+      <MaskMap 
+        mapData={mapdata}
+        latitude={nowlatitude}
+        longitude={nowlongitude}
+        />
     </>
   );
 }
